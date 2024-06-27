@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public string CreateShort(int id)
         {
-            return $"Update shortss ID : {id}";
+            return $"Update shortsss ID : {id}";
 
         }
 
