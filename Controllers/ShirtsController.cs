@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 using WebApplication1.Models.Repositories;
-
+using WebApplication1.Filters;
 namespace WebApplication1.Controllers
 {
     [ApiController]
@@ -9,14 +9,14 @@ namespace WebApplication1.Controllers
     public class ShirtsController : ControllerBase
     {
 
-        /*public List<Shirt> shirts = new List<Shirt>()
+        public List<Shirt> shirts = new List<Shirt>()
         {
 
             new Shirt {ShirtId = 1 , Brand ="My Brand", Color ="Blue", Gender="Men", Size= 30 , Price= 10},
             new Shirt {ShirtId = 2 , Brand ="My Brand", Color ="Black", Gender="Men", Size= 35, Price= 12},
             new Shirt {ShirtId = 3 , Brand ="Your Brand", Color ="Pink", Gender="Women", Size= 28 , Price=8},
             new Shirt {ShirtId = 4 , Brand ="Your Brand", Color ="Yello", Gender="Women", Size= 30, Price=9}
-        };*/
+        };
 
         /*[HttpGet]
         [Route("/shirts")]*/
@@ -37,18 +37,21 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("{id}")]
+        [Shirts_ValidationShirtIdFilter]
         public IActionResult GetshirtsByID(int id)
         {
-            if (id < 0) 
-                return BadRequest();
+            /*if (id < 0) 
+                return BadRequest();*/
             
-            var shirts = ShirtsRepository.GetShirtById(id);
+            //var shirts = ShirtsRepository.GetShirtById(id);
             //this.shirts.First(x => x.ShirtId == id);
             //return $"Reading shord ID : {id}";
-            if (shirts == null)
-               return NotFound();
+            /*if (shirts == null)
+               return NotFound();*/
 
-               return Ok(shirts);
+              // return Ok(shirts);
+
+            return Ok(ShirtsRepository.GetShirtById(id));
         }
 
         [HttpPost]
