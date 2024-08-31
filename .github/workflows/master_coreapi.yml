@@ -32,7 +32,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: D:\a\.netCore-API-Sample\.netCore-API-Sample\bin\Release\net8.0
+          #${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest
