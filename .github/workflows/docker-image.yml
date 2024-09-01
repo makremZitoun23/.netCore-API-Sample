@@ -23,3 +23,8 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ github.run_number }}, ${{ env.IMAGE_NAME }}:latest
           file: ./Dockerfile
+      - name: "Login via Azure CLI"
+        uses: azure/login@v1
+        with:
+          creds: "bonjourZITOUN"
+          #${{ secrets.AZURE_CREDENTIALS }}
