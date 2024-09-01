@@ -1,4 +1,8 @@
 name: Build and Push Docker Image to Docker Hub
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 env:
   IMAGE_NAME: makremzitoun/netcore-api
 on: push
@@ -29,3 +33,4 @@ jobs:
           client-id: 'e5a11586-7826-48da-acfd-4fd040fc761c'
           tenant-id: '2d6fee48-cff1-469e-b3ac-724804962ee5'
           subscription-id: '21820b91-3cd2-4b83-a038-2545bf88960c'
+          
