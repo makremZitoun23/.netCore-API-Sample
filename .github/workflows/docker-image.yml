@@ -13,8 +13,8 @@ jobs:
       - name: login to docker registry
         uses: docker/login-action@v3
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.NETCORE_API_IMG}}
+          username: ${{secrets.DOCKERHUB_USR}}
+          password: ${{secrets.DOCKERHUB_TKN}}
 
       - name: build and push docker image to registry
         uses: docker/build-push-action@v5
