@@ -26,9 +26,6 @@ jobs:
       - name: "Login via Azure CLI"
         uses: azure/login@v1
         with:
-          client-id: "e5a11586-7826-48da-acfd-4fd040fc761c"
-          #${{ secrets.AZUREAPPSERVICE_CLIENTID_FDFCD7A3F24949AE8576B7F5768494B7 }}
-          tenant-id: "2d6fee48-cff1-469e-b3ac-724804962ee5"
-          #${{ secrets.AZUREAPPSERVICE_TENANTID_E0E834DCF88E428EBC7F46FFA0CE1768 }}
-          subscription-id: "21820b91-3cd2-4b83-a038-2545bf88960c"
-          #${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C397836FF52346C8A492E960C1F79736 }}
+          client-id: 'e5a11586-7826-48da-acfd-4fd040fc761c'
+          tenant-id: '2d6fee48-cff1-469e-b3ac-724804962ee5'
+          subscription-id: '21820b91-3cd2-4b83-a038-2545bf88960c'
