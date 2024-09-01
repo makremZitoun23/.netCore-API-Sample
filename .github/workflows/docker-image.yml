@@ -1,6 +1,6 @@
 name: Build and Push Docker Image to Docker Hub
 env:
-  IMAGE_NAME: makremzitoun/netcoreApi
+  IMAGE_NAME: makremzitoun/netcore-api
 on: push
 jobs:
   push_to_registry:
