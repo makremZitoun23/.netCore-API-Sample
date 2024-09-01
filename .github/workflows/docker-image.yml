@@ -22,3 +22,4 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ github.run_number }}, ${{ env.IMAGE_NAME }}:latest
+          file: ./Dockerfile
