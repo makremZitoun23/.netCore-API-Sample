@@ -4,7 +4,9 @@ permissions:
   #pages: write
   id-token: write
 env:
-  IMAGE_NAME: makremzitoun/netcore-api
+  IMAGE_NAME: dotnetaksdemo.azurecr.io/netcore-api
+  #IMAGE_NAME: makremzitoun/netcore-api
+  
 on: push
 #workflow_dispatch
 jobs:
