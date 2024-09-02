@@ -39,4 +39,10 @@ jobs:
         run: |
           az acr list 
           #--query "[?contains(resourceGroup, 'mslearn-gh-pipelines')].loginServer" -o table
-          
+      - name: 'Create RG'
+        run: |   
+          az group create --name AzureRG --location eastus
+      
+      - name: 'Create ACR'
+        run: | 
+          az acr create --resource-group AzureRG --name dotnetaksdemo --sku Basic
