@@ -4,8 +4,7 @@ permissions:
   #pages: write
   id-token: write
 env:
-  IMAGE_NAME: dotnetaksdemo.azurecr.io/netcore-api
-  #IMAGE_NAME: makremzitoun/netcore-api
+    IMAGE_NAME: makremzitoun/netcore-api
   
 on: push
 #workflow_dispatch
@@ -48,3 +47,7 @@ jobs:
       - name: 'Create ACR'
         run: | 
           az acr create --resource-group AzureRG --name dotnetaksdemo --sku Basic
+          
+      - name: 'Create ACR1'
+        run: | 
+         docker build -t dotnetaksdemo.azurecr.io/dotnetapi-aks-app:latest     
