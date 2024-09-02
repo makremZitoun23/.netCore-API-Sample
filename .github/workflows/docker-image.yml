@@ -37,5 +37,6 @@ jobs:
           subscription-id: '${{ secrets.AZURE_SUBSCRIPTION_ID }}'
       - name: 'Run az commands'
         run: |
-          az acr list --query "[?contains(resourceGroup, 'mslearn-gh-pipelines')].loginServer" -o table
+          az acr list 
+          #--query "[?contains(resourceGroup, 'mslearn-gh-pipelines')].loginServer" -o table
           
