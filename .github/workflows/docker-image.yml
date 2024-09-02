@@ -5,8 +5,8 @@ permissions:
   id-token: write
 env:
   IMAGE_NAME: makremzitoun/netcore-api
-on: workflow_dispatch
-#push 
+on: push
+#workflow_dispatch
 jobs:
   push_to_registry:
     name: push docker image to hub
