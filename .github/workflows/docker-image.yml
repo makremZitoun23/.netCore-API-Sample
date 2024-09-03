@@ -6,8 +6,8 @@ permissions:
 env:
     IMAGE_NAME: makremzitoun/netcore-api
   
-on: workflow_dispatch
-#push
+on: push
+#workflow_dispatch
 jobs:
   push_to_registry:
     name: push docker image to hub
@@ -45,7 +45,7 @@ jobs:
   
   Azure_Run_Cmd:
    needs: Azure_Login
-   name: Run CMD 
+   name: RunCMD 
    runs-on: ubuntu-latest
    steps:
       - name: 'Run az commands'
