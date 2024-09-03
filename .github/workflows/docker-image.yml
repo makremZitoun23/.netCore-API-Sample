@@ -50,5 +50,5 @@ jobs:
       
       - name: 'Login to ACR'
         run: | 
-          docker login dotnetaksdemo.azurecr.io
+          
           echo ${{ secrets.AZURE_CLIENT_SECRET }} | docker login dotnetaksdemo.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} --password-stdin
