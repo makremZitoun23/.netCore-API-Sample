@@ -50,5 +50,4 @@ jobs:
       
       - name: 'Login to ACR'
         run: | 
-          #az acr login --name dotnetaksdemo
           docker login dotnetaksdemo.azurecr.io
