@@ -51,7 +51,7 @@ jobs:
       - name: 'Login to ACR'
         run: | 
           echo ${{ secrets.AZURE_CLIENT_SECRET }} | docker login dotnetaksdemo.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} --password-stdin
-      
+#az acr login --name dotnetaksdemo      
       - name: 'Push To ACR'
         run: |
           docker build -t dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }} .        
@@ -60,3 +60,15 @@ jobs:
       - name: 'Confirmation'
         run: |
           az acr repository list --name dotnetaksdemo --output table
+      
+      - name: 'Create AKS Cluster'
+        run: |
+         az aks create --resource-group AzureRG --name myAKSCluster --node-count 2 --generate-ssh-keys --attach-acr dotnetaksdemo
+      
+      - name: 'Connect to cluster using kubectl'
+        run: |
+         az aks get-credentials --resource-group AzureRG --name myAKSCluster
+
+      - name: 'Get Nodes of Cluster'
+        run: |
+         kubectl get nodes
