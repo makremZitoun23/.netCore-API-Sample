@@ -6,8 +6,8 @@ permissions:
 env:
     IMAGE_NAME: makremzitoun/netcore-api
   
-on: push
-#workflow_dispatch
+on: workflow_dispatch
+#push
 jobs:
   push_to_registry:
     name: push docker image to hub
@@ -47,7 +47,4 @@ jobs:
       - name: 'Create ACR'
         run: | 
           az acr create --resource-group AzureRG --name dotnetaksdemo --sku Basic
-          
-      - name: 'Create ACR1'
-        run: | 
-         docker build -t dotnetaksdemo.azurecr.io/dotnetapi-aks-app:latest     
+    
