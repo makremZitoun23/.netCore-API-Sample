@@ -33,7 +33,7 @@ jobs:
   Azure_Login:
    needs: push_to_registry
    name: log to azure 
-   runs-on: ubuntu-lates
+   runs-on: ubuntu-latest
    steps:
       - name: "Login via Azure CLI"
         uses: azure/login@v1
@@ -44,8 +44,9 @@ jobs:
           subscription-id: '${{ secrets.AZURE_SUBSCRIPTION_ID }}'
   
   Azure_Run_Cmd:
+   needs: Azure_Login
    name: Run CMD 
-   runs-on: ubuntu-lates
+   runs-on: ubuntu-latest
    steps:
       - name: 'Run az commands'
         run: |
