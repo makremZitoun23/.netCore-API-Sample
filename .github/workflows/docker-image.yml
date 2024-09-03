@@ -29,6 +29,10 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ github.run_number }}, ${{ env.IMAGE_NAME }}:latest
           file: ./Dockerfile
+  Azure_Login:
+   name: log to azure 
+   runs-on: ubuntu-lates
+   steps:
       - name: "Login via Azure CLI"
         uses: azure/login@v1
         with:
@@ -36,6 +40,10 @@ jobs:
           client-id: '${{ secrets.AZURE_CLIENT_ID }}' 
           tenant-id:  '${{ secrets.AZURE_TENANT_ID }}'
           subscription-id: '${{ secrets.AZURE_SUBSCRIPTION_ID }}'
+  Azure_Run_Cmd:
+   name: Run CMD 
+   runs-on: ubuntu-lates
+   steps:
       - name: 'Run az commands'
         run: |
           az acr list 
