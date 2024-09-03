@@ -73,7 +73,7 @@ jobs:
       
       - name: 'Create AKS Cluster'
         run: |
-         az aks create --resource-group AzureRG --name myAKSCluster --node-count 2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --attach-acr dotnetaksdemo
+         az aks create --resource-group AzureRG --name myAKSCluster --node-count 2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  --attach-acr dotnetaksdemo
       
       - name: 'Connect to cluster using kubectl'
         run: |
