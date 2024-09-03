@@ -50,5 +50,12 @@ jobs:
       
       - name: 'Login to ACR'
         run: | 
-          
           echo ${{ secrets.AZURE_CLIENT_SECRET }} | docker login dotnetaksdemo.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} --password-stdin
+      
+      - name: 'Push To ACR'
+        run: |
+          docker push dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }}
+
+      - name: 'Confirmation'
+        run: |
+          az acr repository list --name dotnetaksdemo --output table
