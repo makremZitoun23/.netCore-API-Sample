@@ -80,7 +80,7 @@ jobs:
          echo "Roles After Assignment"
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
          echo "Create AKS"
-         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size standard_b8pls_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
+         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_B4ps_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
          echo "Show AKS principalID"
          az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o tsv
 
