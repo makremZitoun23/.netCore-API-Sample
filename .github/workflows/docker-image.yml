@@ -53,7 +53,7 @@ jobs:
           #--query "[?contains(resourceGroup, 'mslearn-gh-pipelines')].loginServer" -o table
       - name: 'Create RG'
         run: |   
-          az group create --name AzureRG --location eastus
+          az group create --name AzureRG --location francecentral
       
       - name: 'Create ACR'
         run: | 
