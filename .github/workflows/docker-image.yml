@@ -75,9 +75,13 @@ jobs:
       - name: 'Create AKS Cluster'
         run: |
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
+         echo "Role AcrPull Assignment"
          az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role AcrPull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
+         echo "Roles After Assignment"
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
-         az aks create --resource-group AzureRG --name myAKSCluster --node-count 2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
+         echo "Create AKS"
+         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
+         echo "Show AKS principalID"
          az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o tsv
 
    #--attach-acr dotnetaksdemo
