@@ -53,11 +53,11 @@ jobs:
           #--query "[?contains(resourceGroup, 'mslearn-gh-pipelines')].loginServer" -o table
       - name: 'Create RG'
         run: |   
-          az group create --name AzureRG --location francecentral
+          az group create --name AzureRG1 --location francecentral
       
       - name: 'Create ACR'
         run: | 
-          az acr create --resource-group AzureRG --name dotnetaksdemo --sku Basic
+          az acr create --resource-group AzureRG1 --name dotnetaksdemo --sku Basic
       
       - name: 'Login to ACR'
         run: | 
@@ -76,19 +76,19 @@ jobs:
         run: |
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
          echo "Role AcrPull Assignment"
-         az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role AcrPull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
+         az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role AcrPull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG1/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
          echo "Roles After Assignment"
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
          echo "Create AKS"
-         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_A2_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
+         az aks create --resource-group AzureRG1 --name myAKSCluster --node-count 1 --node-vm-size Standard_A2_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}  
          echo "Show AKS principalID"
-         az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o tsv
+         az aks show --resource-group azureRG1 --name myAKSCluster --query "identity.principalId" -o tsv
 
    #--attach-acr dotnetaksdemo
                   
       - name: 'Connect to cluster using kubectl'
         run: |
-         az aks get-credentials --resource-group AzureRG --name myAKSCluster
+         az aks get-credentials --resource-group AzureRG1 --name myAKSCluster
 
       - name: 'Get Nodes of Cluster'
         run: |
