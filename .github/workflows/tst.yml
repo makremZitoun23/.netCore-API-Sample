@@ -69,7 +69,7 @@ jobs:
     
       - name: 'Login to ACR'
         run: | 
-          echo ${{ secrets.AZURE_CLIENT_SECRET }} | docker login dotnetaksdemo.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} --password-stdin
+         docker login dotnetaksdemo.azurecr.io -u dotnetaksdemo--password r6gdtq95jihjXTSenYNHqBqSEHgSXeaZRuggEkHe2e+ACRD/FayZ
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACRv
