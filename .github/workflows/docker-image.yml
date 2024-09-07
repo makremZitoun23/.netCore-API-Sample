@@ -71,20 +71,24 @@ jobs:
       - name: 'Confirmation'
         run: |
           az acr repository list --name dotnetaksdemo --output table
-      
-      - name: 'Create AKS Cluster'
+      - name: 'check Roles'
         run: |
+         az acr repository list --name dotnetaksdemo --output table
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
          echo "Role AcrPull Assignment"
-         az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role AcrPull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
+         az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role acrpull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
          echo "Roles After Assignment"
          az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
+      - name: 'Create AKS Cluster'
+        run: |
          echo "Create AKS"
          if az aks show --resource-group azureRG --name myAKSCluster > /dev/null 2>&1; then
           echo "Cluster myAKSCluster already exists. Skipping creation."
          else
          echo "Cluster myAKSCluster does not exist. Creating AKS cluster..."
-         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_B4ps_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }} --attach-acr dotnetaksdemo 
+         az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_B4ps_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}
+         # Attach using acr-name
+         az aks update --name myAKSCluster --resource-group myResourceGroup --attach-acr dotnetaksdemo
          fi
          echo "Show AKS principalID"
          az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o table
