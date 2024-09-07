@@ -98,6 +98,7 @@ jobs:
       - name: 'Connect to cluster using kubectl'
         run: |
          az aks get-credentials --resource-group AzureRG --name myAKSCluster
+         kubectl get pods --output=wide
 
       - name: 'Get Nodes of Cluster'
         run: |
