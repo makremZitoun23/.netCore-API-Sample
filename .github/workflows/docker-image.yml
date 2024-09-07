@@ -7,7 +7,7 @@ env:
     IMAGE_NAME: makremzitoun/netcore-api
   
 on: push
-#workflow_dispatchv
+#workflow_dispatch
 jobs:
   push_to_registry:
     name: push docker image to hub
