@@ -32,11 +32,8 @@
 
 name: tst
 
-on:
-  push:
-    #branches: [master]
-  workflow_dispatch:
-
+on: workflow_dispatch
+  
 env:
   ACR_RESOURCE_GROUP: AzureRG
   AZURE_CONTAINER_REGISTRY: dotnetaksdemo
