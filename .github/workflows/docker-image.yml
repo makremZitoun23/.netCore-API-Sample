@@ -91,15 +91,11 @@ jobs:
          az aks update --name myAKSCluster --resource-group azureRG --attach-acr dotnetaksdemo
          fi
          echo "Show AKS principalID"
-         az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o table
-
-   #--attach-acr dotnetaksdemox
-                  
+         az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o table   
       - name: 'Connect to cluster using kubectl'
         run: |
          az aks get-credentials --resource-group AzureRG --name myAKSCluster
-         kubectl get pods --output=wide
-
-      - name: 'Get Nodes of Cluster' 
+      - name: 'Get Nodes of Cluster & pods' 
         run: |
          kubectl get nodes
+         kubectl get pods --output=wide
