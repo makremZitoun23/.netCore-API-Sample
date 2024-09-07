@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apicore-deployment
+  labels:
+    app: apicore-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apicore
+  template:
+    metadata:
+      labels:
+        app: apicore
+    spec:
+      containers:
+      - name: api-core
+        image: dotnetaksdemo.azurecr.io/netcore-api:lates
+        ports:
+        - containerPort: 80
