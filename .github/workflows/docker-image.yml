@@ -99,6 +99,7 @@ jobs:
       - name: 'Get Nodes of Cluster & pods' 
         run: |
          kubectl get nodes
-         kubectl apply -f ./deployPod.yaml
-         kubectl get Deployments
+         kubectl apply -f ./pod.yaml
          kubectl get pods -o wide
+  #kubectl get Deployments
+         
