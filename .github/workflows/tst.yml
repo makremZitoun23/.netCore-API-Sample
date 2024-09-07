@@ -34,7 +34,7 @@ name: tst
 
 on:
   push:
-    branches: [master]
+    #branches: [master]
   workflow_dispatch:
 
 env:
