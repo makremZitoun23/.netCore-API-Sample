@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api
+spec:
+  containers:
+  - name: netcoreapi
+    image: netcore-api:latest
+    ports:
+    - containerPort: 80
