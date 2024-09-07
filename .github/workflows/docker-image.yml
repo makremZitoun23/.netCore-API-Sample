@@ -66,7 +66,7 @@ jobs:
       - name: 'Push To ACR'
         run: |
           docker build -t dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }} .        
-          docker push dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }}
+          docker push dotnetaksdemo.azurecr.io/netcore-api:latest
 
       - name: 'Confirmation'
         run: |
