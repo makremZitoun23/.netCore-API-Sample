@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: api-core
-        image: dotnetaksdemo.azurecr.io/netcore-api:lates
+        image: dotnetaksdemo.azurecr.io/netcore-api:latest
         ports:
         - containerPort: 80
