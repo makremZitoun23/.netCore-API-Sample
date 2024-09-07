@@ -100,3 +100,5 @@ jobs:
         run: |
          kubectl get nodes
          kubectl apply -f ./deployPod.yaml
+         kubectl get Demployments
+         kubectl get pods -o wide
