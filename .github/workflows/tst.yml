@@ -69,7 +69,7 @@ jobs:
     
       - name: 'Login to ACR'
         run: | 
-         docker login dotnetaksdemo.azurecr.io -u dotnetaksdemo--password r6gdtq95jihjXTSenYNHqBqSEHgSXeaZRuggEkHe2e+ACRD/FayZ
+         docker login dotnetaksdemo.azurecr.io -u dotnetaksdemo --password r6gdtq95jihjXTSenYNHqBqSEHgSXeaZRuggEkHe2e+ACRD/FayZ
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACRv
