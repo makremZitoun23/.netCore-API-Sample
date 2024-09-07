@@ -87,15 +87,16 @@ jobs:
          else
          echo "Cluster myAKSCluster does not exist. Creating AKS cluster..."
          az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_B4ps_v2 --generate-ssh-keys --service-principal '${{ secrets.AZURE_CLIENT_ID }}' --client-secret ${{ secrets.AZURE_CLIENT_SECRET }}
-         # Attach using acr-name
-         az aks update --name myAKSCluster --resource-group azureRG --attach-acr dotnetaksdemo
          fi
          echo "Show AKS principalID"
-         az aks show --resource-group azureRG --name myAKSCluster --query "identity.principalId" -o table   
+         az aks show --resource-group azureRG --name myAKSCluster  -o table 
+#Attach using acr-name 
+#az aks update --name myAKSCluster --resource-group azureRG --attach-acr dotnetaksdemo
+           
       - name: 'Connect to cluster using kubectl'
         run: |
-         az aks get-credentials --resource-group AzureRG --name myAKSCluster
+         az aks get-credentials --resource-group azureRG --name myAKSCluster
       - name: 'Get Nodes of Cluster & pods' 
         run: |
          kubectl get nodes
-         curl http://10.224.0.4
+         kubectl apply -f ./deployPod.yaml
