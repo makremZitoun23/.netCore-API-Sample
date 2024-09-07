@@ -98,4 +98,4 @@ jobs:
       - name: 'Get Nodes of Cluster & pods' 
         run: |
          kubectl get nodes
-         kubectl get pods --output=wide
+         curl http://10.224.0.4
