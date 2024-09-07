@@ -72,7 +72,7 @@ jobs:
           echo ${{ secrets.AZURE_CLIENT_SECRET }} | docker login dotnetaksdemo.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} --password-stdin
 
       # Builds and pushes an image up to your Azure Container Registry
-      - name: Build and push image to ACR
+      - name: Build and push image to ACRv
         run: |
           docker build -t dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }} .        
           docker push dotnetaksdemo.azurecr.io/netcore-api:${{ github.run_number }}
