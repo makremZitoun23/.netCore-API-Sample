@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: netcoreapi
-    image: netcore-api:latest
+    image: dotnetaksdemo.azurecr.io/netcore-api:latest
     ports:
     - containerPort: 80
