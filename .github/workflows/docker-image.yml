@@ -79,7 +79,8 @@ jobs:
          az role assignment create --assignee '${{ secrets.AZURE_CLIENT_ID }}' --role acrpull --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
          sleep 60
          echo "Roles After Assignment"
-         az role assignment list --assignee '${{ secrets.AZURE_CLIENT_ID }}'
+         az role assignment list --scope /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourceGroups/azureRG/providers/Microsoft.ContainerRegistry/registries/dotnetaksdemo
+  # --assignee '${{ secrets.AZURE_CLIENT_ID }}'
       - name: 'Create AKS Cluster'
         run: |
          echo "Create AKS"
