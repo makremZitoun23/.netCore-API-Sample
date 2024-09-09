@@ -101,5 +101,6 @@ jobs:
          kubectl get nodes
          kubectl apply -f ./pod.yaml
          kubectl get pods -o wide
+         kubectl describe pod my-pod
   #kubectl get Deployments
          
