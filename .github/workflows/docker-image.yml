@@ -86,12 +86,12 @@ jobs:
          echo "Create AKS"
          if az aks show --resource-group azureRG --name myAKSCluster > /dev/null 2>&1; then
           echo "Cluster myAKSCluster already exists. Skipping creation."
-          az aks update --name myAKSCluster --resource-group AzureRG --attach-acr dotnetaksdemo --assign-identity 4d60f100-ae81-4a0b-8d0b-48a19083efc6 --assign-kubelet-identity /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourcegroups/AzureRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity
+          az aks update --name myAKSCluster --resource-group AzureRG --attach-acr dotnetaksdemo --assign-identity d8330a3a-eb52-43ed-9cf9-b73bc19f1325 --assign-kubelet-identity /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourcegroups/AzureRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity
 
          else
          echo "Cluster myAKSCluster does not exist. Creating AKS cluster..."
          az aks create --resource-group AzureRG --name myAKSCluster --node-count 1 --node-vm-size Standard_B4ps_v2 --generate-ssh-keys          
-         az aks update --name myAKSCluster --resource-group AzureRG --attach-acr dotnetaksdemo --assign-identity 4d60f100-ae81-4a0b-8d0b-48a19083efc6 --assign-kubelet-identity /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourcegroups/AzureRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity
+         az aks update --name myAKSCluster --resource-group AzureRG --attach-acr dotnetaksdemo --assign-identity d8330a3a-eb52-43ed-9cf9-b73bc19f1325 --assign-kubelet-identity /subscriptions/21820b91-3cd2-4b83-a038-2545bf88960c/resourcegroups/AzureRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity
          fi
          echo "Show AKS principalID"
          az aks show --resource-group azureRG --name myAKSCluster  -o table 
